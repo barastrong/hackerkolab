@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Button, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, Pressable, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
+  const [text, SetText] = useState('');
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
@@ -11,11 +13,17 @@ export default function App() {
           source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAhSuaeaiNcqT75V9xm2S0idfKlPYHfIstow&s" }} 
           style={styles.image} 
         />
-             <Button 
-          title="Click Me" 
-          color="#4CAF50" 
-          onPress={() => Alert.alert('Alert!', 'Welcome to React Native')} 
+        <TextInput 
+          style={styles.textInput} 
+          placeholder='Username' 
         />
+        <TextInput 
+          style={styles.textInput} 
+          placeholder='Password' 
+        />
+        <Pressable style={styles.button}>
+          <Text style={styles.texts}>Login</Text>
+        </Pressable>
       </View>
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -25,7 +33,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E85C0D',
   },
   content: {
     flex: 1,
@@ -41,5 +48,34 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
   },
+  textInput: {
+    width: 220,
+    height: 48,
+    borderColor: '#ccc',
+    borderWidth: 1.5,
+    marginBottom: 20,
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    fontSize: 16,
+    backgroundColor: '#f9f9f9',
+  },
+  button: {
+    backgroundColor: '#ff4d4d',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    width: 160,
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  texts: {
+    color: 'white',
+    fontSize: 18,
+  },
 });
-
